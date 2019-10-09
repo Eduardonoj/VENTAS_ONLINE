@@ -1,0 +1,26 @@
+<div class="card border-primary mb-3">
+    <div class=" card-header">TipoEmpaque</div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado de Empaques</h5>
+        <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/home']">
+        Crear Tipo Empaques
+        </button>
+        </div>
+        <div *ngIf="tipoEmpaques?.length == 0" class="alert alert-info">
+            No hay registros en la base de datos
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>Descripción</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tipoEmpaque of tipoEmpaques">
+                    <td>{{tipoEmpaque.descripcion}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
