@@ -19,6 +19,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor} from './components/login/interceptors/token.interceptor';
 import { AuthInterceptor } from './components/login/interceptors/auth.interceptor';
+import { ProductoFormComponent } from './components/productos/producto-form/producto-form.component';
+
 
 
 
@@ -33,7 +35,9 @@ import { AuthInterceptor } from './components/login/interceptors/auth.intercepto
     CategoriasComponent,
     LoginComponent,
     ProductosComponent,
-    TipoEmpaquesComponent
+    TipoEmpaquesComponent,
+    ProductoFormComponent
+    
   ],
   imports: [
     BrowserModule,

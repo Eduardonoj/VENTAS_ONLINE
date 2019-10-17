@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Producto } from '../producto';
 import { Categoria } from '../../categorias/categoria';
 import { TipoEmpaque } from '../../tipo-empaques/tipo-empaque';
+import { ProductoFormComponent } from '../producto-form/producto-form.component';
+import { catchError, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -27,5 +29,18 @@ export class ProductoService {
   getTipoEmpaques(): Observable<TipoEmpaque[]>{
     return this.httpClient.get<TipoEmpaque[]>(`${this.urlEndPoint}/TipoEmpaques`);
 
+  }
+
+  create(producto: Producto): Observable<Producto>{
+    return this.httpClient.post(`${this.urlEndPoint}/Productos`, producto)
+    .pipe(
+      map((response: any) => response as Producto),
+      catchError(e =>{
+        if(e.status === 400){
+          return throwError(e);
+        }
+        return throwError(e);
+      })
+    )
   }
 }
